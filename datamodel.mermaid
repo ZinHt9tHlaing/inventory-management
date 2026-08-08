@@ -1,0 +1,78 @@
+erDiagram
+
+SUPPLIERS {
+bigint id PK
+string name
+string contact
+}
+
+USERS {
+bigint id PK
+string name
+string email
+string role "admin|manager|user"
+string password
+datetime created_at
+datetime updated_at
+}
+
+PRODUCTS {
+bigint id PK
+bigint supplier_id FK
+string name
+string sku
+decimal price
+string image
+}
+
+WAREHOUSES {
+bigint id PK
+string name
+string location
+}
+
+INVENTORIES {
+bigint id PK
+bigint product_id FK
+bigint warehouse_id FK
+int quantity
+}
+
+PRODUCTIONS {
+bigint id PK
+bigint product_id FK
+bigint warehouse_id FK
+bigint created_by FK
+int quantity_produced
+datetime created_at
+}
+
+SHIPMENTS {
+bigint id PK
+bigint warehouse_id FK
+bigint created_by FK
+string shipment_number
+datetime shipped_at
+}
+
+SHIPMENT_ITEMS {
+bigint id PK
+bigint shipment_id FK
+bigint product_id FK
+int quantity
+}
+
+SUPPLIERS ||--o{ PRODUCTS : "1:N supplies"
+
+PRODUCTS ||--o{ INVENTORIES : stored_in
+WAREHOUSES ||--o{ INVENTORIES : holds
+
+PRODUCTS ||--o{ PRODUCTIONS : produced
+WAREHOUSES ||--o{ PRODUCTIONS : happens_in
+USERS ||--o{ PRODUCTIONS : created_by
+
+WAREHOUSES ||--o{ SHIPMENTS : ships_from
+USERS ||--o{ SHIPMENTS : created_by
+
+SHIPMENTS ||--o{ SHIPMENT_ITEMS : contains
+PRODUCTS ||--o{ SHIPMENT_ITEMS : shipped
