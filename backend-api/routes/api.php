@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+// auth
+require_once __DIR__ . "/auth/admin_api.php";
+require_once __DIR__ . "/auth/user_api.php";
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');

@@ -1,0 +1,23 @@
+info:
+  name: verify otp
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{baseUrl}}/auth/verify-otp"
+  body:
+    type: json
+    data: |-
+      {
+        "otp": "123456"
+      }
+  auth:
+    type: bearer
+    token: ""
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
