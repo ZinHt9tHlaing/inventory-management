@@ -17,6 +17,15 @@ http:
     type: bearer
     token: ""
 
+scripts:
+  post-response: |-
+    if (res.getStatus() === 200) {
+      const body = res.getBody();
+      if (body && body.token) {
+        bru.setVar("adminToken", body.token);
+      }
+    }
+
 settings:
   encodeUrl: true
   timeout: 0

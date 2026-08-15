@@ -8,8 +8,8 @@ Route::prefix("user")->group(function () {
     Route::post('login', [AuthController::class, 'login']);
 
     // can only access user
-    Route::middleware(["user"])->group(function () {
+    Route::middleware(["auth:sanctum", "user"])->group(function () {
         Route::post('logout', [AuthController::class, 'logout']);
-        Route::get('me', [AuthController::class, 'me']);
+        Route::get('userInfo', [AuthController::class, 'me']);
     });
 });

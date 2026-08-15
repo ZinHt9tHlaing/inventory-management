@@ -5,17 +5,26 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/auth/login"
+  url: "{{baseUrl}}/user/login"
   body:
     type: json
     data: |-
       {
-        "email": "jessie66@example.org",
+        "email": "user@gmail.com",
         "password": "password"
       }
   auth:
     type: bearer
     token: ""
+
+scripts:
+  post-response: |-
+    if (res.getStatus() === 200) {
+      const body = res.getBody();
+      if (body && body.token) {
+        bru.setVar("userToken", body.token);
+      }
+    }
 
 settings:
   encodeUrl: true

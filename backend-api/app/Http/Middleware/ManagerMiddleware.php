@@ -17,12 +17,6 @@ class ManagerMiddleware
     {
         $user = $request->user();
 
-        if (!$user) {
-            return response()->json([
-                'error' => 'unauthenticated'
-            ], 401);
-        }
-
         if ($user->role !== "manager") {
             return response()->json([
                 'error' => 'Unauthorized'

@@ -13,6 +13,10 @@ http:
     type: bearer
     token: 2|9UFDz6tPKIV8InkVINwZRhOgo5aEbj9XWOSBiN1S424b19c2
 
+# auth:
+#   type: bearer
+#   token: "{{adminToken}}"
+
 settings:
   encodeUrl: true
   timeout: 0

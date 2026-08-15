@@ -13,11 +13,6 @@ config:
         username: ""
         password: ""
       bypassProxy: ""
-
-request:
-  variables:
-    - name: baseUrl
-      value: http://127.0.0.1:8000/api
 bundled: false
 extensions:
   bruno:

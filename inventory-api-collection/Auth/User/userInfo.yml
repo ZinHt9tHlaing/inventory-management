@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/auth/userInfo"
+  url: "{{baseUrl}}/user/userInfo"
   body:
     type: json
     data: ""
