@@ -1,0 +1,28 @@
+info:
+  name: Get All Users
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseUrl}}/admin/users"
+  params:
+    - name: name
+      value: reiciendis
+      type: query
+      disabled: true
+    - name: page
+      value: "4"
+      type: query
+      disabled: true
+    - name: limit
+      value: "3"
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
