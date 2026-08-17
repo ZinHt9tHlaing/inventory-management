@@ -1,0 +1,26 @@
+info:
+  name: Update Supplier
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/admin/suppliers/:id"
+  params:
+    - name: id
+      value: 01m071fq9n9fj5axd6waxwnddt
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Test Supplier update",
+        "contact": "test-supplier@example.net"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

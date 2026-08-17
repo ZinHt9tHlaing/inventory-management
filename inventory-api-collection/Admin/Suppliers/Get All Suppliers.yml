@@ -1,0 +1,28 @@
+info:
+  name: Get All Suppliers
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseUrl}}/admin/suppliers"
+  params:
+    - name: search
+      value: Trevion
+      type: query
+      disabled: true
+    - name: page
+      value: "8"
+      type: query
+      disabled: true
+    - name: limit
+      value: "3"
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

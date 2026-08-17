@@ -1,0 +1,19 @@
+info:
+  name: Delete Supplier
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/admin/suppliers/:id"
+  params:
+    - name: id
+      value: 01m071fq9n9fj5axd6waxwnddt
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
