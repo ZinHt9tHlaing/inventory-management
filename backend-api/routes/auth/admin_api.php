@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\SupplierController;
 use App\Http\Controllers\Api\Admin\UserController;
+use App\Http\Controllers\Api\Admin\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("admin")->group(function () {
@@ -26,11 +27,18 @@ Route::prefix("admin")->group(function () {
                 "message" => "Supplier not found",
             ], 404);
         });
+
+        Route::delete("warehouses/{warehouse}", [WarehouseController::class, 'destroy'])->missing(function () {
+            return response()->json([
+                "message" => "Warehouse not found",
+            ], 404);
+        });
     });
 
     // admin and manager only
     Route::middleware(['auth:sanctum', "role:admin,manager"])->group(function () {
         // view, create, update and can't delete
         Route::apiResource('suppliers', SupplierController::class)->except(['destroy']);
+        Route::apiResource('warehouses', WarehouseController::class)->except(['destroy']);
     });
 });

@@ -1,0 +1,19 @@
+info:
+  name: Delete Warehouse
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/admin/warehouses/:id"
+  params:
+    - name: id
+      value: 01m082vs5k5z9k4wk34awxdamt
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

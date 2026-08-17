@@ -1,0 +1,22 @@
+info:
+  name: Create Warehouse
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{baseUrl}}/admin/warehouses"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Test Warehouse",
+        "location": "58185 Keely Valleys Suite"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

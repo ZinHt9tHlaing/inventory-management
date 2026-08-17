@@ -1,0 +1,7 @@
+info:
+  name: Warehouses
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit

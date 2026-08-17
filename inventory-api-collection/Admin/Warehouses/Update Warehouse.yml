@@ -1,0 +1,26 @@
+info:
+  name: Update Warehouse
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/admin/warehouses/:id"
+  params:
+    - name: id
+      value: 01m083j7emn6c1e9ngbnv38rcr
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Test Warehouse Update",
+        "location": "58185 Keely Valleys Suite"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
