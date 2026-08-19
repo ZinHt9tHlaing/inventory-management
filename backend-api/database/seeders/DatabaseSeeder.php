@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\User;
 use App\Models\Warehouse;
@@ -19,7 +20,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
 
-        Supplier::factory(5)->create();
+        Supplier::factory(5)
+            ->has(Product::factory(3))
+            ->create();
         Warehouse::factory(5)->create();
     }
 }

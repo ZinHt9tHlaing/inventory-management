@@ -1,14 +1,14 @@
 info:
-  name: Delete Supplier
+  name: Get Product By Id
   type: http
-  seq: 4
+  seq: 2
 
 http:
-  method: DELETE
-  url: "{{baseUrl}}/admin/suppliers/:id"
+  method: GET
+  url: "{{baseUrl}}/admin/products/:id"
   params:
     - name: id
-      value: 01m0c6ef76jrga79a7zqe091y3
+      value: 01m0c4edv4xn25qy0q2ahna9hs
       type: path
   auth: inherit
 

@@ -132,6 +132,8 @@ class SupplierController extends Controller
                 ], 403);
             }
 
+            // before supplier deleted, related product's supplier_id will be null
+            $supplier->products()->update(['supplier_id' => null]);
             $supplier->delete();
             return response()->json([
                 "message" => "Supplier deleted successfully",

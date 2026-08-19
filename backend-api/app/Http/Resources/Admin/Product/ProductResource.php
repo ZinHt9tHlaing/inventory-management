@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Resources\Admin\Product;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class ProductResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+            "id" => $this->id,
+            "name" => $this->name,
+            "sku" => $this->sku,
+            "price" => $this->price,
+            "is_deleted" => $this->is_deleted,
+            "supplier_id" => $this->whenLoaded('supplier', function ($supplier) {
+                return [
+                    "id" => $supplier->id,
+                    "name" => $supplier->name,
+                    "contact" => $supplier->contact,
+                ];
+            }),
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
+            'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
+        ];
+    }
+}

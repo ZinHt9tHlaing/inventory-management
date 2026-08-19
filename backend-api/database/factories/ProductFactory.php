@@ -1,0 +1,29 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Product;
+use App\Models\Supplier;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<Product>
+ */
+class ProductFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            "name" => $this->faker->name(),
+            "sku" => strtoupper($this->faker->unique()->bothify('SKU-####-????')),
+            "price" => $this->faker->randomFloat(2, 100, 1000),
+            "is_deleted" => $this->faker->boolean(),
+            "supplier_id" => Supplier::factory(),
+        ];
+    }
+}

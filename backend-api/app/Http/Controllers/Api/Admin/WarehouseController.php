@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Warehouse\StoreRequest;
 use App\Http\Requests\Admin\Warehouse\UpdateRequest;
-use App\Http\Resources\Admin\Supplier\WarehouseResource;
+use App\Http\Resources\Admin\Warehouse\WarehouseResource;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

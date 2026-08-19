@@ -17,6 +17,11 @@ class Supplier extends Model
         'contact',
     ];
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function scopeFilter(Builder $query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {

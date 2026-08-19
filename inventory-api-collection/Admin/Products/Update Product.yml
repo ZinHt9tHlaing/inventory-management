@@ -1,0 +1,28 @@
+info:
+  name: Update Product
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/admin/products/:id"
+  params:
+    - name: id
+      value: 01m0c6ez1bz5fxcffzeddwgnbm
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Product 1 update",
+        "price": 250,
+        "sku": "product-1-update",
+        "supplier_id": "01m0c6ef7yar3cwhsd1pr0cvke"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

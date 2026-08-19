@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Admin\AuthController;
+use App\Http\Controllers\Api\Admin\ProductController;
 use App\Http\Controllers\Api\Admin\SupplierController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\Admin\WarehouseController;
@@ -17,7 +18,6 @@ Route::prefix("admin")->group(function () {
     });
 
     // admin only access
-
     Route::middleware(['auth:sanctum', "role:admin"])->group(function () {
         Route::apiResource('users', UserController::class);
 
@@ -33,6 +33,12 @@ Route::prefix("admin")->group(function () {
                 "message" => "Warehouse not found",
             ], 404);
         });
+
+        Route::delete("products/{product}", [ProductController::class, 'destroy'])->missing(function () {
+            return response()->json([
+                "message" => "Product not found",
+            ], 404);
+        });
     });
 
     // admin and manager only
@@ -40,5 +46,6 @@ Route::prefix("admin")->group(function () {
         // view, create, update and can't delete
         Route::apiResource('suppliers', SupplierController::class)->except(['destroy']);
         Route::apiResource('warehouses', WarehouseController::class)->except(['destroy']);
+        Route::apiResource('products', ProductController::class)->except(['destroy']);
     });
 });
