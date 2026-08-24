@@ -21,23 +21,22 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
 
-        Supplier::factory(5)
-            ->has(Product::factory(3))
-            ->create();
-
         $warehouses = Warehouse::factory(5)->create();
 
-        $products = Product::all();
+        Supplier::factory(5)
+            ->has(
+                Product::factory(3)->afterCreating(function (Product $product) use ($warehouses) {
+                    // one to three warehouses are randomly selected from the five previously created warehouses.
+                    $randomWarehouses = $warehouses->random(fake()->numberBetween(1, 3));
 
-        foreach ($products as $product) {
-            $randomWarehouses = $warehouses->random(rand(1, 3));
-
-            foreach ($randomWarehouses as $warehouse) {
-                Inventory::factory()->create([
-                    'product_id' => $product->id,
-                    'warehouse_id' => $warehouse->id,
-                ]);
-            }
-        }
+                    foreach ($randomWarehouses as $warehouse) {
+                        Inventory::factory()->create([
+                            'product_id' => $product->id,
+                            'warehouse_id' => $warehouse->id,
+                        ]);
+                    }
+                })
+            )
+            ->create();
     }
 }

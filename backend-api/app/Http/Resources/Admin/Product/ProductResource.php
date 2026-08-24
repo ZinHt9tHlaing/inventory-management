@@ -19,7 +19,6 @@ class ProductResource extends JsonResource
             "name" => $this->name,
             "sku" => $this->sku,
             "price" => $this->price,
-            "is_deleted" => $this->is_deleted,
             "supplier_id" => $this->whenLoaded('supplier', function ($supplier) {
                 return [
                     "id" => $supplier->id,
