@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string("name");
             $table->string("sku")->unique(); // stock keeping unit
             $table->decimal("price", 8, 2);
-            $table->boolean("is_deleted")->default(false);
             // if related supplier is deleted, product's supplier_id will be null
-            $table->foreignUlid("supplier_id")->nullable()->constrained("suppliers")->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignUlid("supplier_id")->nullable()->constrained("suppliers")->nullOnDelete();
             $table->timestamps();
         });
     }

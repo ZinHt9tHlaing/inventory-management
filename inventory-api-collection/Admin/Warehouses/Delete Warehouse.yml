@@ -8,7 +8,7 @@ http:
   url: "{{baseUrl}}/admin/warehouses/:id"
   params:
     - name: id
-      value: 01m082vs5k5z9k4wk34awxdamt
+      value: 01m0snp61mv125rcya2hgecj80
       type: path
   auth: inherit
 

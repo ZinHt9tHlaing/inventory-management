@@ -17,6 +17,11 @@ class Warehouse extends Model
         'location',
     ];
 
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
+    }
+
     public function scopeFilter(Builder $query, array $filters)
     {
         $query->when($filters["search"], function ($query, $search) {

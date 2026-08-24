@@ -17,7 +17,6 @@ class ProductController extends Controller
         try {
             $Limit = $request->input('limit', 5);
             $products = Product::with(['supplier'])
-                ->where('is_deleted', false)
                 ->filter([
                     "search" => request("search"),
                     "min_price" => request("min_price"),
@@ -53,12 +52,12 @@ class ProductController extends Controller
             $product = Product::create($request->validated());
 
             return response()->json([
-                "message" => "Product updated successfully",
+                "message" => "Product created successfully",
                 "data" => new ProductResource($product),
             ]);
         } catch (\Exception $e) {
             return response()->json([
-                "message" => "Failed to update product",
+                "message" => "Failed to create product",
                 "error" => $e->getMessage(),
             ], 500);
         }
@@ -67,8 +66,7 @@ class ProductController extends Controller
     public function show(string $id)
     {
         try {
-            $product = Product::with(['supplier'])
-                ->where('is_deleted', false)->find($id);
+            $product = Product::with(['supplier'])->find($id);
             if (!$product) {
                 return response()->json([
                     "message" => "Product not found",
@@ -89,8 +87,7 @@ class ProductController extends Controller
     public function update(UpdateRequest $request, string $id)
     {
         try {
-            $product = Product::with(['supplier'])
-                ->where('is_deleted', false)->find($id);
+            $product = Product::with(['supplier'])->find($id);
             if (!$product) {
                 return response()->json([
                     "message" => "Product not found",
@@ -115,6 +112,12 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         try {
+            // if ($product->is_deleted) {
+            //     return response()->json([
+            //         "message" => "Product not found",
+            //     ], 404);
+            // }
+
             $user = Auth::user();
             if ($user->role !== 'admin') {
                 return response()->json([
@@ -123,10 +126,7 @@ class ProductController extends Controller
                 ], 403);
             }
 
-            $product->update([
-                "is_deleted" => true,
-                "updated_at" => now(),
-            ]);
+            $product->delete();
             return response()->json([
                 "message" => "Product deleted successfully",
             ]);

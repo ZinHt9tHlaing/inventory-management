@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Admin\AuthController;
+use App\Http\Controllers\Api\Admin\InventoryController;
 use App\Http\Controllers\Api\Admin\ProductController;
 use App\Http\Controllers\Api\Admin\SupplierController;
 use App\Http\Controllers\Api\Admin\UserController;
@@ -47,5 +48,10 @@ Route::prefix("admin")->group(function () {
         Route::apiResource('suppliers', SupplierController::class)->except(['destroy']);
         Route::apiResource('warehouses', WarehouseController::class)->except(['destroy']);
         Route::apiResource('products', ProductController::class)->except(['destroy']);
+        Route::apiResource('inventories', InventoryController::class)->missing(function () {
+            return response()->json([
+                "message" => "Inventory not found",
+            ], 404);
+        });
     });
 });

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\User;
@@ -23,6 +24,20 @@ class DatabaseSeeder extends Seeder
         Supplier::factory(5)
             ->has(Product::factory(3))
             ->create();
-        Warehouse::factory(5)->create();
+
+        $warehouses = Warehouse::factory(5)->create();
+
+        $products = Product::all();
+
+        foreach ($products as $product) {
+            $randomWarehouses = $warehouses->random(rand(1, 3));
+
+            foreach ($randomWarehouses as $warehouse) {
+                Inventory::factory()->create([
+                    'product_id' => $product->id,
+                    'warehouse_id' => $warehouse->id,
+                ]);
+            }
+        }
     }
 }

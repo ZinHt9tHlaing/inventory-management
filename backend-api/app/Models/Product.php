@@ -25,6 +25,11 @@ class Product extends Model
         return $this->belongsTo(Supplier::class);
     }
 
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
+    }
+
     public function scopeFilter(Builder $query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
