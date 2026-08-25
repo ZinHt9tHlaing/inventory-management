@@ -8,7 +8,7 @@ http:
   url: "{{baseUrl}}/admin/inventories/:id"
   params:
     - name: id
-      value: 01m0spszjn26tbwphdjz8sxsax
+      value: 01m0vp9bqc3zpk1b5rfe7zbss0
       type: path
   auth: inherit
 
@@ -17,3 +17,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

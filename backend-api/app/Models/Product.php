@@ -30,6 +30,11 @@ class Product extends Model
         return $this->hasMany(Inventory::class);
     }
 
+    public function productions()
+    {
+        return $this->hasMany(Production::class);
+    }
+
     public function scopeFilter(Builder $query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {

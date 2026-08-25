@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\InventoryController;
 use App\Http\Controllers\Api\Admin\ProductController;
+use App\Http\Controllers\Api\Admin\ProductionController;
 use App\Http\Controllers\Api\Admin\SupplierController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\Admin\WarehouseController;
@@ -51,6 +52,11 @@ Route::prefix("admin")->group(function () {
         Route::apiResource('inventories', InventoryController::class)->missing(function () {
             return response()->json([
                 "message" => "Inventory not found",
+            ], 404);
+        });
+        Route::apiResource('productions', ProductionController::class)->missing(function () {
+            return response()->json([
+                "message" => "Production not found",
             ], 404);
         });
     });

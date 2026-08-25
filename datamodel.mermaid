@@ -40,9 +40,9 @@ int quantity
 
 PRODUCTIONS {
 bigint id PK
-bigint product_id FK
-bigint warehouse_id FK
-bigint created_by FK
+bigint product_id FK (products table)
+bigint warehouse_id FK (warehouses table)
+bigint created_by FK (users table)
 int quantity_produced
 datetime created_at
 }

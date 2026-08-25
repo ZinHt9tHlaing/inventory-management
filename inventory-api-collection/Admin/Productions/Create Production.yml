@@ -1,0 +1,24 @@
+info:
+  name: Create Production
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{baseUrl}}/admin/productions"
+  body:
+    type: json
+    data: |-
+      {
+        "product_id": "01m0w541vn79275k1tq1nra1fs",
+        "warehouse_id": "01m0w541tx8qa3zex4aq2q2v7p",
+        "quantity_produced": 50
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

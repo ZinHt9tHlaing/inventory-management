@@ -1,0 +1,27 @@
+info:
+  name: Update Production
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/admin/productions/:id"
+  params:
+    - name: id
+      value: 01m0smtxv8fn4fcfnwvc8ds8gv
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "product_id": "01m0shxw3raxrzdpjd5c165exv",
+        "warehouse_id": "01m0shxw4dw42wym4w99tcwn4k",
+        "quantity": 50
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

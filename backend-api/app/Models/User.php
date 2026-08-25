@@ -50,6 +50,17 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get all productions created by the user.
+     */
+    public function productions()
+    {
+        return $this->hasMany(Production::class, 'created_by');
+    }
+
+    /**
+     * Scope for filtering users.
+     */
     public function scopeFilter(Builder $query, array $filters)
     {
         $query->when($filters['search'] ?? false, fn($query, $search) =>  $query->where("name", "like", "%" . trim(strtolower($search)) . "%"));

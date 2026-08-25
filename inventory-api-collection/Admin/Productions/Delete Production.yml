@@ -1,14 +1,14 @@
 info:
-  name: Get Product By Id
+  name: Delete Production
   type: http
-  seq: 2
+  seq: 4
 
 http:
-  method: GET
-  url: "{{baseUrl}}/admin/products/:id"
+  method: DELETE
+  url: "{{baseUrl}}/admin/productions/:id"
   params:
     - name: id
-      value: 01m0vmz2tv636vb474ba81z0jx
+      value: 01m0spszjn26tbwphdjz8sxsax
       type: path
   auth: inherit
 
@@ -17,4 +17,3 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
-  forwardAuthorizationHeader: true
