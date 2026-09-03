@@ -30,6 +30,11 @@ class Warehouse extends Model
         return $this->hasMany(Production::class);
     }
 
+    public function shipments()
+    {
+        return $this->hasMany(Shipment::class, 'warehouse_id');
+    }
+
     /**
      * Scope for filtering warehouses.
      */

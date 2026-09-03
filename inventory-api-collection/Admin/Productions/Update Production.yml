@@ -8,7 +8,7 @@ http:
   url: "{{baseUrl}}/admin/productions/:id"
   params:
     - name: id
-      value: 01m0smtxv8fn4fcfnwvc8ds8gv
+      value: 01m0w542cd6k3gqpcwq7w0wmkm
       type: path
   body:
     type: json
@@ -25,3 +25,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

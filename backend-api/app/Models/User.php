@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->hasMany(Production::class, 'created_by');
     }
 
+    public function shipments()
+    {
+        return $this->hasMany(Shipment::class, 'created_by');
+    }
+
     /**
      * Scope for filtering users.
      */

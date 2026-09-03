@@ -54,10 +54,15 @@ Route::prefix("admin")->group(function () {
                 "message" => "Inventory not found",
             ], 404);
         });
-        Route::apiResource('productions', ProductionController::class)->missing(function () {
+        Route::apiResource('productions', ProductionController::class)->except(['update'])->missing(function () {
             return response()->json([
                 "message" => "Production not found",
             ], 404);
         });
+        // Route::apiResource('shipments', ShipmentController::class)->missing(function () {
+        //     return response()->json([
+        //         "message" => "Shipment not found",
+        //     ], 404);
+        // });
     });
 });
