@@ -1,0 +1,20 @@
+info:
+  name: Delete Shipment
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/admin/shipments/:id"
+  params:
+    - name: id
+      value: 01m1jp9mgxhr4th18kc70hznhq
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

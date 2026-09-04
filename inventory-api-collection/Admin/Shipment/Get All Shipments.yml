@@ -1,15 +1,16 @@
 info:
-  name: Get All Inventories
+  name: Get All Shipments
   type: http
   seq: 1
 
 http:
   method: GET
-  url: "{{baseUrl}}/admin/inventories?search=Sabryna"
+  url: "{{baseUrl}}/admin/shipments"
   params:
     - name: search
-      value: Sabryna
+      value: Tabitha
       type: query
+      disabled: true
     - name: page
       value: "3"
       type: query

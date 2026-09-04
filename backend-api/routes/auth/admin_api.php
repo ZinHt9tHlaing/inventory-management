@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\InventoryController;
 use App\Http\Controllers\Api\Admin\ProductController;
 use App\Http\Controllers\Api\Admin\ProductionController;
+use App\Http\Controllers\Api\Admin\ShipmentController;
 use App\Http\Controllers\Api\Admin\SupplierController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\Admin\WarehouseController;
@@ -59,10 +60,10 @@ Route::prefix("admin")->group(function () {
                 "message" => "Production not found",
             ], 404);
         });
-        // Route::apiResource('shipments', ShipmentController::class)->missing(function () {
-        //     return response()->json([
-        //         "message" => "Shipment not found",
-        //     ], 404);
-        // });
+        Route::apiResource('shipments', ShipmentController::class)->except(['update'])->missing(function () {
+            return response()->json([
+                "message" => "Shipment not found",
+            ], 404);
+        });
     });
 });

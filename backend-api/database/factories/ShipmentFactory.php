@@ -19,10 +19,13 @@ class ShipmentFactory extends Factory
      */
     public function definition(): array
     {
+        static $index = 1;
+        $year = now()->year;
+
         return [
             "warehouse_id" => Warehouse::factory(),
             "created_by" => User::factory(),
-            "shipment_number" => $this->faker->unique()->word(),
+            "shipment_number" => sprintf('SHIP-%d-%04d', $year, $index++),
             "shipped_at" => $this->faker->dateTimeThisYear(),
         ];
     }

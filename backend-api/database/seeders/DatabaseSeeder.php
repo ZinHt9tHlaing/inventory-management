@@ -8,6 +8,7 @@ use App\Models\Production;
 use App\Models\Supplier;
 use App\Models\User;
 use App\Models\Warehouse;
+use Database\Seeders\shipment\ShipmentSeeder;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            ShipmentSeeder::class
         ]);
 
         $warehouses = Warehouse::factory(5)->create();
